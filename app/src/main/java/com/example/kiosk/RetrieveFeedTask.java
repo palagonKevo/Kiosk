@@ -28,7 +28,7 @@ public class RetrieveFeedTask extends AsyncTask<String, Void, JSONArray> {
     protected JSONArray doInBackground(String... strings) {
         JSONObject json = new JSONObject();
         try {
-            json.put("sender","caca");
+            json.put("sender",strings[1]);
             json.put("message",strings[0]);
         } catch (JSONException e) {
             e.printStackTrace();

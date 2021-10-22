@@ -47,14 +47,6 @@ public class FirstFragment extends Fragment {
                 getActivity().finish();
             }
         });
-        Button btn2 = view.findViewById(R.id.button_second);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.out.println("CLICK");
-                Navigation.findNavController(v).navigate(R.id.thirdFragment);
-            }
-        });
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

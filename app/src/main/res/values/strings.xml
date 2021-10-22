@@ -1,15 +1,13 @@
 <resources>
-    <string name="app_name">Kiosk</string>
+    <string name="app_name">Sukalberri</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="third_fragment_label">Third Fragment</string>
+    <string name="first_fragment_label">Home</string>
+    <string name="second_fragment_label">Speech Recognition</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
     <string name="close">Close App</string>
-    <string name="speech">Speech</string>
-    <string name="video">Video</string>
+    <string name="speech">Listar objetos</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -20,4 +18,14 @@
     <string name="phone_caption">To try phonetic recognition say anything.</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string-array name="android_versions">
+        <item>Cupcake</item>
+        <item>Donut</item>
+        <item>Eclair</item>
+        <item>Froyo</item>
+        <item>Gingerbread</item>
+        <item>HoneyComb</item>
+        <item>Ice Cream SandWich</item>
+        <item>Jelly Bean</item>
+    </string-array>
 </resources>

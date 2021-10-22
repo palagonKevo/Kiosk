@@ -14,9 +14,6 @@
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
-        <action
-            android:id="@+id/action_FirstFragment_to_thirdFragment"
-            app:destination="@id/thirdFragment" />
 
     </fragment>
 
@@ -30,15 +27,6 @@
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"
-            app:destination="@id/FirstFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/thirdFragment"
-        android:name="com.example.kiosk.ThirdFragment"
-        android:label="fragment_third"
-        tools:layout="@layout/fragment_third" >
-        <action
-            android:id="@+id/action_thirdFragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>
