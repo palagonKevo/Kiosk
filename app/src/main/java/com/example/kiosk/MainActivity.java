@@ -5,6 +5,8 @@ import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -13,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 
@@ -39,6 +42,68 @@ public class MainActivity extends AppCompatActivity  {
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private ConexionSQLiteHelper conn;
+
+    public void initDB(){
+        if(conn!=null){
+            conn.resetTables();
+            Product p1 = new Product("descr1", 2L, (short) 0, "codi", true, (short) 0, "tagComment");
+            Product p2 = new Product("descr2", 2L, (short) 0, "codi", true, (short) 0, "tagComment");
+            Product p3 = new Product("descr3", 2L, (short) 0, "codi", true, (short) 0, "tagComment");
+            Product p4 = new Product("descr4", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p5 = new Product("descr5", 2L, (short) 0, "codi", true, (short) 0, "tagComment");
+            Product p6 = new Product("descr6", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p7 = new Product("descr7", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p8 = new Product("descr8", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p9 = new Product("descr9", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p10 = new Product("descr10", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p11 = new Product("descr11", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p12 = new Product("descr12", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p13 = new Product("descr13", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p14 = new Product("descr14", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p15 = new Product("descr15", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p16 = new Product("descr16", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p17 = new Product("descr17", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p18 = new Product("descr18", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p19 = new Product("descr19", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p20 = new Product("descr20", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p21 = new Product("descr21", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p22 = new Product("descr22", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p23 = new Product("descr23", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+            Product p24 = new Product("descr24", 2L, (short) 0, "codi", false, (short) 0, "tagComment");
+
+
+
+
+            conn.agregarProductos(p1);
+            conn.agregarProductos(p2);
+            conn.agregarProductos(p3);
+            conn.agregarProductos(p4);
+            conn.agregarProductos(p5);
+            conn.agregarProductos(p6);
+            conn.agregarProductos(p7);
+            conn.agregarProductos(p8);
+            conn.agregarProductos(p9);
+            conn.agregarProductos(p10);
+            conn.agregarProductos(p11);
+            conn.agregarProductos(p12);
+            conn.agregarProductos(p13);
+            conn.agregarProductos(p14);
+            conn.agregarProductos(p15);
+            conn.agregarProductos(p16);
+            conn.agregarProductos(p17);
+            conn.agregarProductos(p18);
+            conn.agregarProductos(p19);
+            conn.agregarProductos(p20);
+            conn.agregarProductos(p21);
+            conn.agregarProductos(p22);
+            conn.agregarProductos(p23);
+            conn.agregarProductos(p24);
+
+
+            Log.println(Log.INFO,"DB","Data Base succesfully initialized");
+        }
+    }
 
     @Override
     protected void onPause() {
@@ -70,6 +135,7 @@ public class MainActivity extends AppCompatActivity  {
         //}
     }
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,6 +145,10 @@ public class MainActivity extends AppCompatActivity  {
         Configuration config = new Configuration(getApplicationContext().getResources().getConfiguration());
         Locale.setDefault(locale);
         config.setLocale(locale);
+        getApplicationContext().deleteDatabase("product_db");
+        conn = new ConexionSQLiteHelper(this);
+        initDB();
+        showDB();
 
         getApplicationContext().getResources().updateConfiguration(config,
         getApplicationContext().getResources().getDisplayMetrics());
@@ -103,6 +173,14 @@ public class MainActivity extends AppCompatActivity  {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
+    }
+
+    private void showDB() {
+        Log.println(Log.INFO,"DB", "Showing db");
+        Cursor cursor = conn.getAllProducts();
+        for(cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()){
+            System.out.println(cursor.getString(1) + " " +cursor.getString(2) + " " + cursor.getString(3) + " " + cursor.getString(4) + " " + cursor.getString(5) + " " + cursor.getString(6));
+        }
     }
 
     private void checkPermission() {
