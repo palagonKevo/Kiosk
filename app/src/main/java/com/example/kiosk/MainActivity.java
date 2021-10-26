@@ -6,33 +6,36 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
+
 import android.os.Build;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
+import com.example.kiosk.databinding.ActivityMainBinding;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
+
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import com.example.kiosk.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.Toast;
+
+import java.util.List;
 import java.util.Locale;
 
 
@@ -118,23 +121,14 @@ public class MainActivity extends AppCompatActivity  {
     public void onBackPressed() {
         // nothing to do here
         // … really
+
     }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // Do nothing or catch the keys you want to block
         return true;
     }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        //if(!hasFocus) {
-            // Close every kind of system dialog
-            //Intent closeDialog = new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS);
-            //sendBroadcast(closeDialog);
-        //}
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,7 +142,7 @@ public class MainActivity extends AppCompatActivity  {
         getApplicationContext().deleteDatabase("product_db");
         conn = new ConexionSQLiteHelper(this);
         initDB();
-        showDB();
+        //showDB();
 
         getApplicationContext().getResources().updateConfiguration(config,
         getApplicationContext().getResources().getDisplayMetrics());

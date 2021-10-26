@@ -66,4 +66,16 @@ public class ConexionSQLiteHelper extends SQLiteOpenHelper {
                         null,
                         null);
     }
+
+    public Cursor getProductById(String id){
+        return getReadableDatabase()
+                .query(
+                        "productos",
+                        null,
+                        "id LIKE ?",
+                        new String[]{id},
+                        null,
+                        null,
+                        null);
+    }
 }

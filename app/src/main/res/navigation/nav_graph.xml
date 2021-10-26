@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_FirstFragment_to_thirdFrament"
             app:destination="@id/thirdFrament" />
+        <action
+            android:id="@+id/action_FirstFragment_to_barCode_fragment"
+            app:destination="@id/barCode_fragment" />
 
     </fragment>
 
@@ -35,10 +38,19 @@
     <fragment
         android:id="@+id/thirdFrament"
         android:name="com.example.kiosk.ThirdFrament"
-        android:label="fragment_third_frament"
-        tools:layout="@layout/fragment_third" >
+        android:label="Inventario"
+        tools:layout="@layout/fragment_third">
         <action
             android:id="@+id/action_thirdFrament_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/barCode_fragment"
+        android:name="com.example.kiosk.BarCode_fragment"
+        android:label="BarCode"
+        tools:layout="@layout/fragment_bar_code" >
+        <action
+            android:id="@+id/action_barCode_fragment_to_FirstFragment"
             app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

@@ -47,6 +47,8 @@ public class FirstFragment extends Fragment {
 
         binding.inventory.setOnClickListener(view1 -> NavHostFragment.findNavController(FirstFragment.this)
                 .navigate(R.id.action_FirstFragment_to_thirdFrament));
+        binding.barcode.setOnClickListener(v -> NavHostFragment.findNavController(FirstFragment.this)
+                .navigate(R.id.action_FirstFragment_to_barCode_fragment));
     }
 
     @Override
